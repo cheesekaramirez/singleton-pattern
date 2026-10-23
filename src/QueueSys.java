@@ -7,14 +7,15 @@ public class QueueSys {
     private int queueNum= 1;
     
     public static synchronized QueueSys getInstance() {
-        if(instance = null){
+        if(instance == null){
             instance = new QueueSys();
         }
         return instance;
     }
 
-    public synchronized int enqueue(int qn) {
-        queue.offer(qn);
+    public synchronized int enqueue() {
+        queue.offer(queueNum);
+        System.out.println("Your number is: "+queueNum);
         return queueNum++;
     }
 
@@ -33,6 +34,6 @@ public class QueueSys {
         }
         queue.clear();
         queueNum = newNum;
-        System.out.printf("Helpdesk "+helpdesk+" has reset the queue to number "+newNum+".");
+        System.out.println("Helpdesk "+helpdesk+" has reset the queue to number "+newNum+".");
     }
 }
